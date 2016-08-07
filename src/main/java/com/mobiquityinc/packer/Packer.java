@@ -11,12 +11,11 @@ public class Packer {
     private PackageDefinitionsReader reader = new PackageDefinitionsReader();
 
     public static void main(String[] args) {
-        if (args.length > 0) {
-            System.out.println(pack(args[0]));
-        } else {
+        if (args.length == 0) {
             System.err.println("You should pass path to packages definition file.");
             System.exit(1);
         }
+        System.out.println(pack(args[0]));
     }
 
     public static String pack(String path) {
