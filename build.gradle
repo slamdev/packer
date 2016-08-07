@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'findbugs'
+    id 'pmd'
+    id 'checkstyle'
+    id 'jacoco'
+    id 'idea'
+}
+
+apply from: 'gradle/validation.gradle'
+apply from: 'gradle/coverage.gradle'
+
+group 'com.mobiquityinc'
+version '1.0.0-SNAPSHOT'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14.1'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.github.stefanbirkner:system-rules:1.16.0'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
+}
+
+test {
+    systemProperty 'file.encoding', 'utf-8'
+}

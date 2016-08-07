@@ -1,0 +1,26 @@
+<FindBugsFilter>
+    <!--NOTE: all matchers should be also added to excludeTest.xml-->
+    <Match>
+        <Or>
+            <Bug code="CD"/>
+            <Bug code="PRMC"/>
+            <Bug code="IMC"/>
+            <Bug code="OPM"/>
+            <Bug code="UrF"/>
+            <Bug code="UwF"/>
+            <Bug code="MRC"/>
+            <Bug code="UP"/>
+            <Bug code="UTAO"/>
+            <Bug code="EXS"/>
+            <Bug code="NAB"/>
+            <Bug code="JPAI"/>
+            <Bug code="USBR"/>
+            <Bug code="CFS"/>
+            <Bug code="CLI"/>
+            <Bug code="SIC"/>
+            <Bug code="UCPM"/>
+            <Bug code="NP"/>
+            <Bug code="WEM"/>
+        </Or>
+    </Match>
+</FindBugsFilter>

@@ -1,0 +1,53 @@
+pmd {
+    toolVersion = '5.5.1'
+    ignoreFailures = false
+    consoleOutput = false
+}
+
+tasks.withType(Pmd) {
+    if (name == 'pmdMain') {
+        ruleSetFiles = files('config/pmd/ruleSetMain.xml')
+        ruleSets = []
+    } else {
+        ruleSetFiles = files('config/pmd/ruleSetTest.xml')
+        ruleSets = []
+    }
+}
+
+checkstyle {
+    toolVersion = '7.1'
+    ignoreFailures = false
+}
+
+tasks.withType(Checkstyle) {
+    if (name == 'checkstyleMain') {
+        configFile = file('config/checkstyle/checkstyleMain.xml')
+    } else {
+        configFile = file('config/checkstyle/checkstyleTest.xml')
+    }
+}
+
+findbugs {
+    toolVersion = '3.0.1'
+    ignoreFailures = false
+    effort = 'max'
+    reportLevel = 'low'
+}
+
+tasks.withType(FindBugs) {
+    if (name == 'findbugsMain') {
+        excludeFilter = file('config/findbugs/excludeMain.xml')
+    } else {
+        excludeFilter = file('config/findbugs/excludeTest.xml')
+
+    }
+    pluginClasspath = project.configurations.findbugsPlugins
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+dependencies {
+    findbugsPlugins 'com.mebigfatguy.fb-contrib:fb-contrib:6.6.1'
+}
